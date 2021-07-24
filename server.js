@@ -1,10 +1,10 @@
 require('dotenv').config();
+const exphbs = require('express-handlebars');
 const express = require('express');
+const path = require('path');
 const sequelize = require('./config/connection');
 const router = require('./controllers');
-const exphbs = require('express-handlebars');
 const helpers = require('./util/helpers');
-const path = require('path');
 const sessionMiddleware = require('./config/session');
 
 const PORT = process.env.PORT || 3001;
