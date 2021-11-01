@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const sequelize = require("../config/connection");
 
 // create our User model
 class User extends Model {
@@ -25,10 +25,6 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      // validate for a password hash
-      validate: {
-        is: /^[0-9a-f]{64}$/i
-      }
     },
   },
   {
@@ -50,7 +46,7 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'User',
+    modelName: "User",
   }
 );
 
