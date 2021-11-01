@@ -11,6 +11,7 @@ const seedDatabase = async () => {
       individualHooks: true,
       returning: true,
     });
+    console.log("Finished seeding database.");
   } catch (error) {
     console.error(error);
     console.error(
