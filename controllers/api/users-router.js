@@ -1,5 +1,4 @@
 const { User } = require("../../models");
-
 const router = require("express").Router();
 
 router.post("/", async (req, res) => {
@@ -8,13 +7,7 @@ router.post("/", async (req, res) => {
     const user = await User.create(req.body, { username, password });
     req.session.isLoggedIn = true;
     req.session.userId = user.id;
-    req.session.save((err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ message: "Internal server error." });
-      }
-      res.json({ id: user.id });
-    });
+    req.session.save(() => res.json({ id: user.id }));
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error." });
@@ -34,13 +27,7 @@ router.post("/login", async (req, res) => {
     }
     req.session.isLoggedIn = true;
     req.session.userId = user.id;
-    req.session.save((err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ message: "Internal server error." });
-      }
-      res.json({ id: user.id });
-    });
+    req.session.save(() => res.json({ id: user.id }));
   } catch (error) {
     console.error(error);
     res.status(400).json({ message: "Invalid username or password." });
