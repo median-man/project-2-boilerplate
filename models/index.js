@@ -1,4 +1,4 @@
-const User = require('./User');
+const User = require("./User");
 
 // Define sequelize associations in this file.
 
